@@ -1,0 +1,25 @@
+{
+    "cities": [
+      {
+        "id": 1,
+        "name": "Kyiv"
+      },
+      {
+        "id": 2,
+        "name": "Odesa"
+      },
+      {
+        "id": 3,
+        "name": "Dnipro"
+      },
+      {
+        "id": 4,
+        "name": "Kharkiv"
+      },
+      {
+        "id": 5,
+        "name": "Lviv"
+      }
+    ]
+  }
+  

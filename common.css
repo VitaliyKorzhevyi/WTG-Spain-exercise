@@ -1,0 +1,29 @@
+body {
+  padding: 100px 200px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.title {
+  display: flex;
+  gap: 12px;
+  align-items: flex-end;
+}
+
+.button-title {
+  margin: 0 0 12px;
+  height: 28px;
+  color: white;
+  text-align: center;
+  display: block;
+  padding: 4px 12px;
+  background-color: rgb(102, 131, 228);
+  cursor: pointer;
+  font-size: 12px;
+}
+
+table {
+  margin: 0 auto;
+}

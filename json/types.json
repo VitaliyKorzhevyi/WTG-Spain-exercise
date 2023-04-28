@@ -1,0 +1,25 @@
+{
+    "houseTypes": [
+      {
+        "id": 1,
+        "name": "Apartment"
+      },
+      {
+        "id": 2,
+        "name": "Villa"
+      },
+      {
+        "id": 3,
+        "name": "Penthouse"
+      },
+      {
+        "id": 4,
+        "name": "Mansion"
+      },
+      {
+        "id": 5,
+        "name": "Cottage"
+      }
+    ]
+  }
+  

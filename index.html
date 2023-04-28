@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./common.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css" rel="stylesheet" />
+
+    <title>Table</title>
+</head>
+
+  <body>
+    <div class="title">
+        <h2>Property table</h2>
+        <button type="button" id="add-row-button" class="button-title">
+             Add row
+        </button>
+        <button type="button" class="button-title">
+             Save
+        </button>
+    </div>
+
+    <table class="table table-bordered">
+            <thead>
+              <tr>
+                <th>Number</th>
+                <th>ID</th>
+                <th>Price</th>
+                <th>City</th>
+                <th>Type</th>
+                <th>Actions</th>
+              </tr> 
+            </thead>
+            <tbody>
+                <tr>
+                    <td value="" selected>All</td>
+                    <td></td>
+                    <td><input type="number" name="price" class="all-price"/></td>
+                    <td>
+                      <select class="js-data-example-ajax city-select" id="mySelect" name="city" style="width: 120px">
+                        <option value="" selected>Select to all</option>
+                      </select>
+                    </td>
+                    <td>
+                      <select class="js-data-example-ajax type-select"  name="type" style="width: 120px">
+                        <option value="" selected>Select to all</option>
+                      </select>
+                    </td>
+                    <td>
+                    </td>
+                  </tr>
+
+            </tbody>
+      </table>
+
+      <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
+      <script type="module" src="./index.js"></script>
+  </body>
+</html>
