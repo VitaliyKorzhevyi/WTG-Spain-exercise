@@ -1,4 +1,4 @@
-// Отримую значенння з JSON
+//* -------- Отримую значенння з JSON ------
 $.ajax({
   url: "./json/cities.json",
   dataType: "json",
@@ -19,7 +19,7 @@ $.ajax({
   },
 });
 
-// за кліком на кнопку додаю рядок
+//* -------- За кліком на кнопку додаю рядок ------
 const addButton = document.querySelector("#add-row-button");
 const tableBody = document.querySelector("tbody");
 let rowCount = 1;
@@ -89,45 +89,93 @@ tableBody.addEventListener("click", (event) => {
   }
 });
 
+// Price
+
 tableBody.addEventListener("change", (event) => {
-    const target = event.target;
-    if (target.name === "price" && target.closest(".all-price") !== null) {
+  const target = event.target;
+  
+  if (target.name === "price" && target.closest(".all-price") !== null) {
+    
+    const confirmed = confirm("Чи впевнені ви, що хочете відредагувати усі значення стовбця?");
+    
+    if (confirmed) {
       const allRows = tableBody.querySelectorAll("tr");
       for (let i = 0; i < allRows.length; i++) {
         const row = allRows[i];
         if (row.querySelector("td:first-child").textContent !== "All") {
           const input = row.querySelector('input[name="price"]');
-          input.value = target.value;
-        }
-      }
-  
-      const confirmed = confirm("Чи впевнені ви, що хочете відредагувати усі значення стовбця?");
-      if (confirmed) {
-        const allInput = target.parentNode.parentNode.querySelectorAll('input[name="price"]');
-        for (let i = 0; i < allInput.length; i++) {
-          allInput[i].value = "";
-        }
-      } else {
-       
-        for (let i = 0; i < allRows.length; i++) {
-          const row = allRows[i];
-          if (row.querySelector("td:first-child").textContent !== "All") {
-            const input = row.querySelector('input[name="price"]');
-            input.value = input.getAttribute("data-previous-value");
+          if (input.closest(".all-price") === null) {
+            input.value = target.value;
           }
         }
       }
-    } else if (target.name === "price") {
-      // Зберігаю минулий стан
-      target.setAttribute("data-previous-value", target.value);
+      target.closest(".all-price").value = "";
+    
+    } else {
+    
+      for (let i = 0; i < allRows.length; i++) {
+    
+        const row = allRows[i];
+        if (row.querySelector("td:first-child").textContent !== "All") {
+          const input = row.querySelector('input[name="price"]');
+          input.value = input.getAttribute("data-previous-value");
+        }
+      }
     }
-  });
+    target.closest(".all-price").value = "";
+  } else if (target.name === "price") {
+    target.setAttribute("data-previous-value", target.value);    
+  }
+});
 
-//   $(document).ready(function() {
-//     $('.city-select').on('change', function() {
-//       var selectedCity = $(this).val();
-//       console.log(selectedCity);
-//     });
-//   });
+// CITY
 
 
+
+//* -------- Дії викликані по кнопці  "Copy" ------
+tableBody.addEventListener("click", (event) => {
+  const target = event.target;
+  if (target.classList.contains("delete-button")) {
+  const row = target.parentNode.parentNode;
+  deleteRow(row);
+  } else if (target.tagName === "BUTTON" && target.textContent === "Copy") {
+  const rowToCopy = target.parentNode.parentNode;
+  const newRow = rowToCopy.cloneNode(true);  
+ 
+  newRow.querySelector("td:nth-child(2) input").value = "";
+
+  tableBody.appendChild(newRow);
+
+  const rows = tableBody.querySelectorAll("tr");
+  for (let i = 0; i < rows.length; i++) {
+    rows[i].querySelector("td:first-child").textContent = i + 1;
+  }
+}
+});
+
+
+// ------------------------
+
+// tableBody.addEventListener("change", (event) => {
+//   const target = event.target;
+  
+//   // Проверяем, что был изменен список городов в строке All
+//   if (target.classList.contains("city-select") && target.closest("tr").querySelector("td:first-child").getAttribute("value") === "all") {
+    
+//     // Проверяем выбранную опцию
+//     if (target.value !== "city") {
+//       // Вызываем модальное окно с подтверждением
+//       const confirmed = confirm("Are you sure you want to change the value in the entire column?");
+      
+//       if (!confirmed) {
+//         // Если пользователь отказался от изменения, возвращаем предыдущее значение списка
+//         const previousValue = target.getAttribute("data-previous-value");
+//         target.value = previousValue;
+//         return;
+//       }
+//     }
+    
+//     // Сохраняем выбранное значение для последующей проверки
+//     target.setAttribute("data-previous-value", target.value);
+//   }
+// });
